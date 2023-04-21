@@ -1,0 +1,36 @@
+<h1>List of photos</h1>
+
+<table border="1">
+  <tr>
+    <th>Image</th>
+    <th>Caption</th>
+    <th>Owner</th>
+    <th>Posted</th>
+    <th></th>
+  </tr>
+<% @list_of_photos.each do | a_photo |%>
+  <tr>
+    <td>
+      <img src="<%= %>">
+    </td>
+
+    <td>
+      <%= %>
+    </td>
+
+    <td>
+      <%= %>
+    </td>
+
+    <td>
+    <%= %>
+    </td>
+
+    <td>
+      <a href="/photos/777">
+        Show details
+      </a>
+    </td>
+  </tr>
+<% end %>
+  </table>

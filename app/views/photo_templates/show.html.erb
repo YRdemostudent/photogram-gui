@@ -1,0 +1,23 @@
+<h1>Photo Details</h1>
+
+<%= @the_photo%>
+<dl>
+  <dt>Image</dt>
+  <dd>
+    <img src="<%#= @the_photo.image %>">
+  </dd>
+
+  <dt>Caption</dt>
+  <dd>
+    <p><%#= @the_photo.caption %></p>
+  </dd>
+
+  <dt>Owner</dt>
+  <dd>
+    <%#= @the_photo.poster.username%>
+  </dd>
+
+  <dt>Posted</dt>
+  <dd>
+    2019-04-27 11:56:39 UTC
+  </dd>

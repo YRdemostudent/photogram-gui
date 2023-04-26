@@ -1,32 +1,31 @@
 <h1>Photo Details</h1>
 
-
 <dl>
   <dt>Image</dt>
   <dd>
-    <img src="<%= @the_photo.image %>">
+    <img src="<%=@the_photo.image%>">
   </dd>
 
   <dt>Caption</dt>
   <dd>
-    <p><%= @the_photo.caption %></p>
+    <p><%=@the_photo.caption%></p>
   </dd>
 
   <dt>Owner</dt>
   <dd>
-    <%= @the_photo.poster.username %>
+    <%=@the_photo.poster.username%>
   </dd>
 
   <dt>Posted</dt>
   <dd>
-  <%= @the_photo.created_at %>
+    <%=@the_photo.created_at%>
   </dd>
 
-   <dt>Edit photo</dt>
+  <dt>Edit photo</dt>
   <dd>
-    <form action="/update_photo/<%= @the_photo.id %>">
+    <form action="/update_photo/<%= @the_photo.id%>">
       <label for="browser_image">Image</label>
-      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="https://robohash.org/dolorehicincidunt.png?size=300x300&amp;set=set1">
+      <input id="browser_image" type="text" name="input_image" placeholder='https://some.test/image-1680624315.jpg' value="<%= @the_photo.image %>">
 
       <label for="browser_caption">Caption</label>
       <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo...">Once you’ve accepted your flaws, no one can use them against you.</textarea>
@@ -37,7 +36,7 @@
 
   <dt>Delete photo</dt>
   <dd>
-    <a href="/delete_photo/<%= @the_photo.id %>">
+    <a href="/delete_photo/<%=@the_photo.id%>">
       Delete this photo
     </a>
   </dd>
@@ -52,20 +51,32 @@
     <th>Posted</th>
   </tr>
 
-  <% @the_photo.comments.each do | a_comment | %>
+ <%@the_photo.comments.each do |a_comment|%>
   <tr>
     <td>
-      <%= a_comment.commenter.username %>
+      <%=a_comment.commenter.username%>
     </td>
     <td>
-      <%= a_comment.body %>
+      <%=a_comment.body%>
     </td>
-
     <td>
-      <%= a_comment.created_at%>
+     <%=a_comment.created_at%>
     </td>
   </tr>
-  <% end %>
-  </table>
+  <%end%>
   
-  <h3>Add a new comment</h3>
+<table>
+<h3>Add a new comment</h3>
+
+  <form action="/insert_comment_record">
+    <label for="browser_photo_id">Photo ID</label>
+    <input id="browser_photo_id" type="text" value="<%=@the_photo.id%>" name="input_photo_id">
+
+    <label for="browser_author_id">Author ID</label>
+    <input id="browser_author_id" type="text" name="input_author_id">
+
+    <label for="browser_comment">Comment</label>
+    <textarea id="browser_comment" name="input_body" placeholder="Enter a comment..."></textarea>
+
+    <button>Add comment</button>
+  </form>

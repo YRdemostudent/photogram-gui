@@ -24,12 +24,26 @@ class UsersController < ApplicationController
   end 
 
   def create
-    
   input_username = params.fetch("input_username")
   a_new_user = User.new
   a_new_user.username = input_username
   a_new_user.save
+
   #render(:template => "user_templates/create.html.erb")
   redirect_to("/users/#{a_new_user.username}")
   end 
+
+  def update
+    the_user = params.fetch("modify_user")
+    matching_user = User.where({:username => the_user})
+    current_user = matching_user.at(0)
+    
+    input_user = params.fetch("input_username")
+    current_user.username = input_user
+    current_user.save
+
+    #render(:template => "user_templates/update.html.erb")
+    redirect_to("/users/#{current_user.username}")
+end
+
 end

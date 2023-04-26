@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end 
 
   def create
+    
   input_username = params.fetch("input_username")
   a_new_user = User.new
   a_new_user.username = input_username
